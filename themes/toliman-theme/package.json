@@ -1,0 +1,18 @@
+{
+  "name": "toliman-theme",
+  "version": "1.0.0",
+  "description": "Toliman WordPress theme",
+  "main": "assets/js/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d assets/js",
+    "minify": "minify assets/js/main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-minify": "^0.5.1"
+  }
+}
