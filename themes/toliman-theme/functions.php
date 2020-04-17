@@ -31,7 +31,7 @@ function toliman_enqueue_media() {
 	// ----------------------------- CSS ----------------------------- //
 
 	// Animate.css
-	//wp_enqueue_style('animate', get_template_directory_uri() . '/assets/css/animate.css', array(), '1.0.0');
+	wp_enqueue_style('animate', get_template_directory_uri() . '/assets/css/animate.css', array(), '1.0.0');
 
 	// Boostrap
 	wp_enqueue_style('bootstrap-css', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', array(), '1.0.0');
@@ -40,15 +40,18 @@ function toliman_enqueue_media() {
 	wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v5.0.12/css/all.css');
 
 	// Default Styles
-	wp_enqueue_style('stylesheet', get_template_directory_uri() . '/style.css', array(), '1.0.03');
+	wp_enqueue_style('stylesheet', get_template_directory_uri() . '/style.css', array(), '1.0.07');
 
 	// ----------------------------- JS ----------------------------- //
 
 	// jQuery
 	wp_enqueue_script( 'jquery' );
 
+	// Bootstrap
+	wp_enqueue_script('bootstrap-js', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', array(), '1.0.0');
+
 	// Main scripts
-	wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.02', true);
+	wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.07', true);
 
 	// Bio EP Popup
 	//wp_enqueue_script('popup-js', get_template_directory_uri() . '/assets/js/bioep.min.js', array(), '2.0.0', true);

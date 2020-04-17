@@ -1,3 +1,19 @@
+<div id="overlay" class="<?php if (!is_front_page()) : echo 'active'; endif; ?>">
+    <?php
+        if (!is_front_page()) : ?>
+        <div class="tol-modal-overlay page faded-in">
+            <div class="load-icon animated fade-out"><i class="fas fa-circle-notch fa-spin"></i></div>
+            <div class="tol-modal-box zoomed-in fade-in">
+                <div id="exit"><i class="fas fa-times"></i></div>
+                <div class="tol-modal-content faded-in">
+                    <?php get_template_part('template-parts/loop'); ?>
+                </div>
+            </div>
+        </div>
+        <?php endif;
+     ?>
+</div>
+
 <footer class="footer pb-5">
 	<div class="container">
 		<div class="row align-items-center justify-content-between">
