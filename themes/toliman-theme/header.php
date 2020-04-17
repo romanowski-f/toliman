@@ -27,9 +27,9 @@
 
     <header class="main-header">
         <div class="container">
-            <div class="row align-items-center justify-content-between">
+            <div class="row align-items-center justify-content-between m-0">
                 <div class="logo">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-white.png" alt="">
+                    <a href="<?php echo get_bloginfo('url'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-white.png" alt=""></a>
                 </div>
                 <div class="menu-wrapper d-none d-md-flex align-items-center">
                     <?php

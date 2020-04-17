@@ -1,1 +1,2 @@
-'use strict';jQuery(document).ready(function(a){a(document).on('click','.mobile-nav-button',function(){a('.mobile-nav-button, .mobile-nav').addClass('open')}),a(document).on('click','.close-button',function(){a('.mobile-nav-button, .mobile-nav').removeClass('open')})});
+'use strict';jQuery(document).ready(function(a){a(document).on('click','.mobile-nav-button',function(){a('.mobile-nav-button, .mobile-nav').addClass('open')}),a(document).on('click','.close-button',function(){a('.mobile-nav-button, .mobile-nav').removeClass('open')});// Call to action text
+var b=a('ul.descriptions li'),c=a('ul.categories li');console.log(b),a(document).on('click','ul.categories li',function(){a('ul.categories li').removeClass('active'),a(this).addClass('active')})});

@@ -40,7 +40,7 @@ function toliman_enqueue_media() {
 	wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v5.0.12/css/all.css');
 
 	// Default Styles
-	wp_enqueue_style('stylesheet', get_template_directory_uri() . '/style.css', array(), '1.0.02');
+	wp_enqueue_style('stylesheet', get_template_directory_uri() . '/style.css', array(), '1.0.03');
 
 	// ----------------------------- JS ----------------------------- //
 
@@ -48,7 +48,7 @@ function toliman_enqueue_media() {
 	wp_enqueue_script( 'jquery' );
 
 	// Main scripts
-	wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', array(), '1.7.8', true);
+	wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.02', true);
 
 	// Bio EP Popup
 	//wp_enqueue_script('popup-js', get_template_directory_uri() . '/assets/js/bioep.min.js', array(), '2.0.0', true);
