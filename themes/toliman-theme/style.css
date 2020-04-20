@@ -25,6 +25,10 @@ Version: 1.0
 	font-weight: normal;
 }
 
+html {
+	overflow-x: hidden;
+}
+
 html, body {
 	padding: 0;
 	margin: 0;
@@ -244,6 +248,7 @@ section {
 .divided {
 	z-index: 2;
 	position: relative;
+	overflow-x: hidden;
 }
 
 .divided::before {
@@ -324,6 +329,7 @@ ul.descriptions li {
 	left: 0;
 	width: 100%;
 	transition: 0.4s;
+	margin-bottom: 1.1em;
 }
 
 ul.descriptions li.active {
@@ -375,6 +381,12 @@ ul.categories li.active::after {
 	width: 100%;
 	height: 530px;
 	top:-60px;
+}
+
+@media (max-width: 992px) {
+	.proven-success {
+		background: url('assets/images/bg-proven-success-768.png');
+	}
 }
 
 .phones {
@@ -554,6 +566,7 @@ p.about {
 
 #overlay {
 	overflow-y: scroll;
+	transition: 0.25s;
 }
 
 #overlay.active {
@@ -722,7 +735,8 @@ footer .contact {
 }
 
 .fadeInUp {
-	animation-timing-function: cubic-bezier(.66,.01,0,1.05);;
+	animation-timing-function: cubic-bezier(.66,.01,0,1.05);
+	animation-duration: 0.5s;
 }
 
 .fade-in-slow {
@@ -908,5 +922,15 @@ footer .contact {
 @media screen and (max-width: 782px) {
 	.admin-bar .main-header {
 		top:46px;
+	}
+}
+
+@media screen and (max-width: 567px) {
+	.call-to-action {
+		padding-top: 60px;
+	}
+
+	.c2a-content h2 {
+		font-size: 40px;
 	}
 }

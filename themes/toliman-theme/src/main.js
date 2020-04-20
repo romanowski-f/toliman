@@ -204,7 +204,7 @@ $(window).scroll(function() {
     		setTimeout(function() {
     			phone.addClass('animated fadeInUp');
     		}, delay);
-    		delay += 200;
+    		delay += 75;
     	})
     }
 

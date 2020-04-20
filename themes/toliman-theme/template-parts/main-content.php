@@ -1,8 +1,8 @@
 <main>
-	<section class="call-to-action d-flex align-items-center">
+	<section class="call-to-action d-flex align-items-lg-center">
 		<div class="container">
 			<div class="row align-items-center">
-				<div class="iphone-wrapper">
+				<div class="iphone-wrapper d-none d-sm-block">
 					<img src="<?php echo get_template_directory_uri(); ?>/assets/images/iphone-top.png" alt="">
 				</div>
 				<div class="col-sm c2a-content">
