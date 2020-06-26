@@ -23,15 +23,15 @@
 			<div class="footer-col">
 				<p class="attract">Create Your App <span>Today!</span></p>
 			</div>
-			<div class="footer-col">
+<!-- 			<div class="footer-col">
 				<ul class="more-info mb-0" style="padding-left: 10px">
 					<li>Sed ut perspiciatis unde omnis iste natus error sit.</li>
 					<li>Accusantium doloremque laudantium, totam rem aperiam them.</li>
 					<li>Pasa quae ab illo inventore veritatis et quasi architecto.</li>
 				</ul>
-			</div>
+			</div> -->
 			<div class="footer-col">
-				<a href="#" class="btn btn-square">Create Your App</a>
+				<a href="<?php echo bloginfo('url'); ?>/contact" class="btn btn-square">Create Your App</a>
 			</div>
 		</div>
         <div class="menu-wrapper d-flex align-items-center justify-content-center">
@@ -44,7 +44,7 @@
                     'container_class'   => 'toliman-footer-menu'
                 ) );
             ?>
-            <a href="#" class="contact">Contact Us</a>
+            <a href="<?php echo bloginfo('url'); ?>/contact" class="contact">Contact Us</a>
         </div>
 	</div>
 </footer>

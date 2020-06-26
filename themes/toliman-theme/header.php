@@ -38,10 +38,10 @@
                             'menu_id'        => 'primary-menu',
                             'menu_class'     => 'nav-home nav justify-content-end',
                             'container'      => 'nav',
-                            'container_class'   => 'toliman-main-menu'
+                            'container_class'   => 'toliman-main-menu',
                         ) );
                     ?>
-                    <a class="btn btn-primary contact-button" href="#">Contact Us</a>
+                    <a class="btn btn-primary contact-button" href="<?php echo bloginfo('url'); ?>/contact">Contact Us</a>
                 </div>
 
                 <div class="mobile-nav-button d-md-none"><div class="nav-icon"></div></div>

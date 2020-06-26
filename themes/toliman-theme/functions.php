@@ -40,7 +40,7 @@ function toliman_enqueue_media() {
 	wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v5.0.12/css/all.css');
 
 	// Default Styles
-	wp_enqueue_style('stylesheet', get_template_directory_uri() . '/style.css', array(), '1.0.12');
+	wp_enqueue_style('stylesheet', get_template_directory_uri() . '/style.css', array(), '1.0.23');
 
 	// ----------------------------- JS ----------------------------- //
 
@@ -51,7 +51,7 @@ function toliman_enqueue_media() {
 	wp_enqueue_script('bootstrap-js', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', array(), '1.0.0');
 
 	// Main scripts
-	wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.08', true);
+	wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.15', true);
 
 	// Bio EP Popup
 	//wp_enqueue_script('popup-js', get_template_directory_uri() . '/assets/js/bioep.min.js', array(), '2.0.0', true);
@@ -88,7 +88,7 @@ function toliman_enqueue_admin_media() {
 
 }
 
-add_action('admin_enqueue_scripts', 'toliman_enqueue_admin_media');
+//add_action('admin_enqueue_scripts', 'toliman_enqueue_admin_media');
 
 /*
 *
@@ -154,5 +154,32 @@ function wpdocs_excerpt_more( $more ) {
     );
 }
 add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
+
+
+
+
+
+
+
+
+/**
+ * Descriptions on Header Menu
+ * @author Bill Erickson
+ * @link http://www.billerickson.net/code/add-description-to-wordpress-menu-items/
+ * 
+ * @param string $item_output, HTML outputp for the menu item
+ * @param object $item, menu item object
+ * @param int $depth, depth in menu structure
+ * @param object $args, arguments passed to wp_nav_menu()
+ * @return string $item_output
+ */
+function be_header_menu_desc( $item_output, $item, $depth, $args ) {
+	
+	if( 'menu-1' == $args->theme_location && ! $depth && $item->description )
+		$item_output = str_replace( '</a>', '</a><div class="description">' . $item->description . '</div>', $item_output );
+		
+	return $item_output;
+}
+add_filter( 'walker_nav_menu_start_el', 'be_header_menu_desc', 10, 4 );
 
 ?>

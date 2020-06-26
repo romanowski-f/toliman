@@ -1,4 +1,12 @@
-let base = '/toliman/'
+//let base = '/toliman/'
+var getUrl = document.location.origin;
+console.log(getUrl);
+
+let base = '/';
+if (getUrl != 'https://tolimanhealth.com') {
+	base = '/toliman/'
+}
+
 let siteDomain = base;
 let popState = false;
 
@@ -36,11 +44,17 @@ var modal = {
 		switch(type) {
 			case 'page':
 			default:
-				modal.load(pageurl);
-				jQuery('html').css({'overflow-y': 'hidden'});
-				jQuery('#overlay').css('overflow-y', 'scroll');
+
+			break;
+
+			case 'success':
+				$('.tol-modal-overlay').addClass('.proven-success');
 			break;
 		}
+
+		modal.load(pageurl);
+		jQuery('html').css({'overflow-y': 'hidden'});
+		jQuery('#overlay').css('overflow-y', 'scroll');		
 
 		setTimeout(function() {
 			jQuery('.tol-modal-overlay').removeClass('fade-in');
@@ -154,11 +168,16 @@ jQuery(document).ready(function($) {
 			if (height > highest) highest = height;
 		})
 		parent.css('height', highest + 'px');
+		children.each(function() {
+			$(this).css('height', '100%');
+		});
+
+		console.log(elementHeights);		
 	}
-	setSliderHeight($('ul.descriptions'), $('ul.descriptions li'));
+	setSliderHeight($('ul.descriptions'), $('ul.descriptions li p'));
 
 	$(window).resize(function() {
-		setSliderHeight($('ul.descriptions'), $('ul.descriptions li'));
+		setSliderHeight($('ul.descriptions'), $('ul.descriptions li p'));
 	})
 
 
@@ -189,13 +208,13 @@ $(window).scroll(function() {
     	titles.each(function() {
     		let title = $(this);
     		setTimeout(function() {
-    			if (title.parent('#community').length) {
+    			if (title.parent('.phone-community').length) {
     				title.addClass('fadeInRight');
     			} else {
 					title.addClass('fadeInLeft');
     			}
     		}, delay);
-    		delay += 250;
+    		delay += 75;
     	});
 
     	delay = 0;
@@ -215,6 +234,13 @@ $(window).scroll(function() {
     }
 });
 
+$(document).on('click', '.reminder__dismiss', function() {
+	$('.reminder').addClass('fadeOutRight');
+	setTimeout(function() {
+		$('.reminder').remove();
+	}, 1000);
+})
+
 
 
 // ------------------ Modal control
@@ -222,6 +248,7 @@ $(document).on('click', '.open-modal', function(e) {
 	e.preventDefault();
 	var pageurl;
 	var	modalType = 'page';
+	if ($(this).hasClass('phone')) modalType = 'success';
 	if ($(this).attr('href') != undefined) {
 		pageurl = $(this).attr('href');
 		var canChange = true;
@@ -291,5 +318,91 @@ $(document).on('click', '#exit, .exit-modal', function(e) {
 	e.preventDefault();
 	modal.destroy();
 })
+
+
+
+
+
+
+function normalizeSlideHeights() {
+    $('.carousel').each(function(){
+      var items = $('.carousel-item', this);
+      // reset the height
+      items.css('min-height', 0);
+      // set the height
+      var maxHeight = Math.max.apply(null, 
+          items.map(function(){
+              return $(this).outerHeight()}).get() );
+      items.css('min-height', maxHeight + 'px');
+      console.log('check');
+    })
+}
+
+$(window).on(
+    'load resize orientationchange', 
+    normalizeSlideHeights);
+
+
+
+
+
+
+function waitForWebfonts(fonts, callback) {
+    var loadedFonts = 0;
+    for(var i = 0, l = fonts.length; i < l; ++i) {
+        (function(font) {
+            var node = document.createElement('span');
+            // Characters that vary significantly among different fonts
+            node.innerHTML = 'giItT1WQy@!-/#';
+            // Visible - so we can measure it - but not on the screen
+            node.style.position      = 'absolute';
+            node.style.left          = '-10000px';
+            node.style.top           = '-10000px';
+            // Large font size makes even subtle changes obvious
+            node.style.fontSize      = '300px';
+            // Reset any font properties
+            node.style.fontFamily    = 'sans-serif';
+            node.style.fontVariant   = 'normal';
+            node.style.fontStyle     = 'normal';
+            node.style.fontWeight    = 'normal';
+            node.style.letterSpacing = '0';
+            document.body.appendChild(node);
+
+            // Remember width with no applied web font
+            var width = node.offsetWidth;
+
+            node.style.fontFamily = font + ', sans-serif';
+
+            var interval;
+            function checkFont() {
+                // Compare current width with original width
+                if(node && node.offsetWidth != width) {
+                    ++loadedFonts;
+                    node.parentNode.removeChild(node);
+                    node = null;
+                }
+
+                // If all fonts have been loaded
+                if(loadedFonts >= fonts.length) {
+                    if(interval) {
+                        clearInterval(interval);
+                    }
+                    if(loadedFonts == fonts.length) {
+                        callback();
+                        return true;
+                    }
+                }
+            };
+
+            if(!checkFont()) {
+                interval = setInterval(checkFont, 50);
+            }
+        })(fonts[i]);
+    }
+};
+
+waitForWebfonts(['Gotham Book'], function() {
+    setSliderHeight($('ul.descriptions'), $('ul.descriptions li p'));
+});
 
 })
