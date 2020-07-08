@@ -16,12 +16,12 @@
 
 <footer class="footer pb-5">
 	<div class="container">
-		<div class="row align-items-center justify-content-between">
-			<div class="footer-col">
-				<a href="<?php echo get_bloginfo('url'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-dark.png" style="margin-top: -23px"></a>
+		<div class="row align-items-center justify-content-center">
+			<div class="col-sm text-center mb-3 smb-sm-0">
+				<a href="<?php echo get_bloginfo('url'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-dark.png"></a>
 			</div>
-			<div class="footer-col">
-				<p class="attract">Create Your App <span>Today!</span></p>
+			<div class="col-sm text-center">
+				<a href="<?php echo bloginfo('url'); ?>/contact" class="attract">Create Your App <span>Today!</span></a>
 			</div>
 <!-- 			<div class="footer-col">
 				<ul class="more-info mb-0" style="padding-left: 10px">
@@ -30,21 +30,22 @@
 					<li>Pasa quae ab illo inventore veritatis et quasi architecto.</li>
 				</ul>
 			</div> -->
-			<div class="footer-col">
-				<a href="<?php echo bloginfo('url'); ?>/contact" class="btn btn-square">Create Your App</a>
-			</div>
 		</div>
-        <div class="menu-wrapper d-flex align-items-center justify-content-center">
-            <?php
-                wp_nav_menu( array(
-                    'theme_location'    => 'menu-1',
-                    'menu_id'        => 'footer-menu',
-                    'menu_class'     => 'nav-home nav',
-                    'container'      => 'nav',
-                    'container_class'   => 'toliman-footer-menu'
-                ) );
-            ?>
-            <a href="<?php echo bloginfo('url'); ?>/contact" class="contact">Contact Us</a>
+        <div class="row">
+            <div class="col-12 d-none d-sm-block">
+                <div class="menu-wrapper d-flex align-items-center justify-content-center">
+                    <?php
+                        wp_nav_menu( array(
+                            'theme_location'    => 'menu-1',
+                            'menu_id'        => 'footer-menu',
+                            'menu_class'     => 'nav-home nav',
+                            'container'      => 'nav',
+                            'container_class'   => 'toliman-footer-menu'
+                        ) );
+                    ?>
+                    <a href="<?php echo bloginfo('url'); ?>/contact" class="contact">Contact Us</a>
+                </div>
+            </div>
         </div>
 	</div>
 </footer>

@@ -134,7 +134,7 @@ header ul li {
 	position: relative;
 }
 
-header .description {
+/* header .description {
 	position: absolute;
     left: 50%;
     width: 240px;
@@ -146,6 +146,22 @@ header .description {
     box-sizing: border-box;
     box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
     color: #000;
+    transition: 0.15s ease-in;
+    opacity: 0;
+    font-family: 'Gotham Light';
+    cursor: default;
+} */
+
+header .description {
+	position: absolute;
+    left: 0;
+	white-space: nowrap;
+    width: 300px;
+    transform: translate(-50%, 40px);
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #fff;
     transition: 0.15s ease-in;
     opacity: 0;
     font-family: 'Gotham Light';
@@ -456,7 +472,7 @@ ul.categories li.active::after {
 	.proven-success-header {
 		position: relative;
 		top:30px;
-	}	
+	}
 }
 
 @media (max-width: 992px) {
@@ -466,7 +482,7 @@ ul.categories li.active::after {
 
 	.hands {
 		display: none;
-	}	
+	}
 
 	.proven-success {
 		background-position: left 10px;
@@ -480,11 +496,11 @@ ul.categories li.active::after {
 @media (max-width: 576px) {
 	.proven-success {
 		background-position: right 10px;
-	}	
+	}
 
 	.proven-success-header {
 		top:-10px;
-	}	
+	}
 }
 
 .phones {
@@ -496,7 +512,8 @@ ul.categories li.active::after {
 
 .phone {
 	position: absolute;
-	height: 223px;
+	/* height: 223px; */
+	height:  auto;
 	width: 157px;
 	opacity: 0;
 	cursor: pointer;
@@ -525,7 +542,7 @@ ul.categories li.active::after {
 -webkit-transform: scale(1.05);
     -ms-transform: scale(1.05);
     transform: scale(1.05);
-    opacity: 1;	
+    opacity: 1;
 }
 
 
@@ -544,18 +561,34 @@ ul.categories li.active::after {
     top: 300px;
 }
 
+.reminder-overlay {
+	background: rgba(0, 0, 0, 0.3);
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1049;
+	transition:  0.5s;
+}
 
+.reminder-overlay.fadeOut {
+	opacity:  0;
+}
 
 .reminder {
-	position: absolute;
+	position: fixed;
 	right: 75px;
-	margin-top: -180px;
+	/* margin-top: -180px; */
+	top: 50%;
+	margin-top: -250px;
 	z-index: 10;
 	background: url('assets/images/reminder-sparkle.png');
 	background-position: center;
 	height: 561px;
-	width: 212px;	
+	width: 212px;
 	padding-top: 73px;
+	z-index:  1050;
 }
 
 .reminder__dismiss {
@@ -574,6 +607,14 @@ ul.categories li.active::after {
 	transition:0.25s;
 }
 
+.reminder__dismiss {
+	height:50px;
+	width: 50px;
+	line-height: 48px;
+	font-size:22px;
+	border: 2px solid #fff;
+}
+
 .reminder__dismiss:hover {
 	background: #f3a01d;
 }
@@ -587,9 +628,10 @@ ul.categories li.active::after {
 }
 
 .offscreen {
-	-webkit-transform: translateX(510px);
-	    -ms-transform: translateX(510px);
-	        transform: translateX(510px);
+	-webkit-transform: translateX(100%);
+	    -ms-transform: translateX(100%);
+	        transform: translateX(100%);
+	        right: 0!important;
 }
 
 img.frame {
@@ -622,7 +664,8 @@ img.frame {
 }
 
 .carousel-indicators li {
-	height: 42px;
+	/* height: 42px; */
+	height: auto;
 	width: 42px;
 	position: relative;
 	display: -webkit-flex;
@@ -634,14 +677,31 @@ img.frame {
 	justify-content: center;
 	border-radius: 100%;
 	border: 1px solid transparent;
+	position: relative;
 }
 
-.carousel-indicators li::before {
+.carousel-indicators li::before{
+	content: "";
+	padding-top: 100%;
+	width: 100%;
+	display: block;
+}
+
+.carousel-indicators li .pad {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.carousel-indicators li::after{
 	content: "";
 	height: 6px;
 	width: 6px;
 	border-radius: 100%;
 	background: #b7cbde;
+	position: absolute;
 }
 
 .carousel-indicators li.active {
@@ -905,7 +965,7 @@ img.frame {
 .steps {
 	font-size: 16px;
   list-style: none;
-  counter-reset: my-awesome-counter;	
+  counter-reset: my-awesome-counter;
 }
 
 .steps li {
@@ -952,7 +1012,7 @@ position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;	
+    justify-content: center;
     cursor: pointer;
     padding:0 10px;
 }
@@ -967,9 +1027,9 @@ position: absolute;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    align-items: center;	
+    align-items: center;
     cursor: pointer;
-    padding:0 10px;    
+    padding:0 10px;
 }
 
 .modal-control-next .control,
@@ -978,7 +1038,7 @@ position: absolute;
 }
 .modal .control::before,
 .modal .control::after {
-	background: #fff;	
+	background: #fff;
 }
 
 .modal span {
@@ -994,7 +1054,7 @@ position: absolute;
 	color: #5190ce;
 }
 
-p.attract {
+.attract {
 	font-family: Gotham Black;
 	font-size: 18px;
 	margin: 0;
@@ -1254,6 +1314,13 @@ footer .contact {
 
 /* ----------------------------- Breakpoints --------------------- */
 
+@media (max-width: 1600px) {
+	.reminder {
+	right: 50%;
+	margin-right: -106px;
+	}
+}
+
 
 @media screen and (max-width: 767px) {
 	.admin-bar .main-header {
@@ -1274,10 +1341,33 @@ footer .contact {
 
 	ul.categories li {
 		margin: 10px 15px;
-	}	
+	}
 }
 
 @media screen and (max-width: 567px) {
+	.phones {
+		width: 100%;
+	}
+
+	.phone {
+		width:  130px;
+	}
+
+	.phone-decision {
+		right: initial;
+		left: 0px;
+		top: 100px;
+	}
+
+	.phone-community {
+		top: 100px;
+	}
+
+	.phone-knowledge {
+		right: 50%;
+    	margin-right: -65px;
+	}
+
 	.c2a-content h2 {
 		font-size: 40px;
 	}
@@ -1295,10 +1385,8 @@ footer .contact {
 		right:20px;
 	}
 
-	.reminder {
-		margin-top: -80px;
-		right: 50%;
-		margin-right: -106px;
+	.reminder-overlay {
+		cursor:  pointer;
 	}
 
 	.reminder__dismiss {
@@ -1307,6 +1395,15 @@ footer .contact {
 		line-height:51px;
 		font-size:22px;
 		border: 2px solid #fff;
+	}
+
+	.carousel-control-next, .carousel-control-prev {
+		top: 100%;
+		bottom: -75px;
+	}
+
+	.carousel-item {
+		padding: 0;
 	}
 }
 

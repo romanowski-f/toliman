@@ -2,16 +2,18 @@
   <ol class="carousel-indicators">
 
     <?php $i = 0; ?>
-      <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-        <li data-target="#tolimanNewsCarousel" data-slide-to="<?php echo $i; ?>" <?php if ($i == 0) : ?>class="active"<?php endif;?>></li>
+    <?php $args = array( 'post_type' => 'post', 'posts_per_page'=> 6 ); ?>
+    <?php $main_posts = new WP_Query( $args ); ?>
+      <?php if ( $main_posts->have_posts() ) : while ( $main_posts->have_posts() ) : $main_posts->the_post(); ?>
+        <li data-target="#tolimanNewsCarousel" data-slide-to="<?php echo $i; ?>" <?php if ($i == 0) : ?>class="active"<?php endif;?>><div class="pad"></div></li>
       <?php $i++; ?>
-    <?php endwhile; endif; ?> 
+    <?php endwhile; endif; ?>
 
   </ol>
   <div class="carousel-inner">
 
   <?php $i = 0; ?>
-    <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+    <?php if ( $main_posts->have_posts() ) : while ( $main_posts->have_posts() ) : $main_posts->the_post(); ?>
 
 
 
@@ -39,7 +41,7 @@
     </div>
 
     <?php $i++; ?>
-  <?php endwhile; endif; ?> 
+  <?php endwhile; endif; ?>
 
   </div>
   <a class="carousel-control-prev" href="#tolimanNewsCarousel" role="button" data-slide="prev">

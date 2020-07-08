@@ -48,7 +48,7 @@
                 <div class="mobile-nav d-md-none">
                      <?php
                         wp_nav_menu( array(
-                            'theme_location'    => 'menu-1',
+                            'theme_location'    => 'menu-2',
                             'container'      => 'nav',
                             'container_class'   => 'toliman-mobile-menu'
                         ) );

@@ -20,6 +20,10 @@ const mobile = () => {
 	return false;
 }
 
+const xl = () => {
+	if (window.innerWidth > 1600) return true;
+	return false;
+}
 
 Array.from( document.querySelectorAll( ':not(.admin-bar) a' ) ).forEach( a => {
     a.classList.add( location.hostname === a.hostname || !a.hostname.length ? 'open-modal' : 'external' );
@@ -54,7 +58,7 @@ var modal = {
 
 		modal.load(pageurl);
 		jQuery('html').css({'overflow-y': 'hidden'});
-		jQuery('#overlay').css('overflow-y', 'scroll');		
+		jQuery('#overlay').css('overflow-y', 'scroll');
 
 		setTimeout(function() {
 			jQuery('.tol-modal-overlay').removeClass('fade-in');
@@ -172,7 +176,7 @@ jQuery(document).ready(function($) {
 			$(this).css('height', '100%');
 		});
 
-		console.log(elementHeights);		
+		console.log(elementHeights);
 	}
 	setSliderHeight($('ul.descriptions'), $('ul.descriptions li p'));
 
@@ -227,18 +231,21 @@ $(window).scroll(function() {
     	})
     }
 
-    if ($('.reminder').length && $('.reminder').isInViewport(250) && !reminderInView) {
-    	$('.reminder').addClass('animated fadeInRight');
-    	reminderInView = true;
-    	setTimeout(function() { $('.reminder').removeClass('offscreen fadeInRight')}, 1000)
+    if ($('.reminder').length && $('.reminder-trigger').isInViewport(250) && !reminderInView) {
+    	$('.reminder').addClass('animated fadeInRight').removeClass('offscreen');
+    	if (!xl()) {
+    		$('.reminder-trigger').prepend('<div class="reminder-overlay"></div>');
+    	}
+		reminderInView = true;
+    	setTimeout(function() { $('.reminder').removeClass('offscreen fadeInRight')}, 1000);
     }
 });
 
-$(document).on('click', '.reminder__dismiss', function() {
+$(document).on('click', '.reminder__dismiss, .reminder-overlay', function() {
 	$('.reminder').addClass('fadeOutRight');
-	setTimeout(function() {
-		$('.reminder').remove();
-	}, 1000);
+	$('.reminder-overlay').addClass('fadeOut');
+    setTimeout(function() { $('.reminder-overlay').remove() }, 500);
+	setTimeout(function() { $('.reminder').remove(); }, 1000);
 })
 
 
@@ -330,7 +337,7 @@ function normalizeSlideHeights() {
       // reset the height
       items.css('min-height', 0);
       // set the height
-      var maxHeight = Math.max.apply(null, 
+      var maxHeight = Math.max.apply(null,
           items.map(function(){
               return $(this).outerHeight()}).get() );
       items.css('min-height', maxHeight + 'px');
@@ -338,9 +345,9 @@ function normalizeSlideHeights() {
     })
 }
 
-$(window).on(
-    'load resize orientationchange', 
-    normalizeSlideHeights);
+// $(window).on(
+//     'load resize orientationchange',
+//     normalizeSlideHeights);
 
 
 
