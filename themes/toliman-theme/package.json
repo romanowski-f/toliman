@@ -6,13 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src -d assets/js",
-    "minify": "minify assets/js/main.js"
+    "minify": "minify assets/js/main.js",
+    "wp-build": "wp-scripts build ./src/phone-carousel.js --output-path=assets/js/blocks"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/preset-react": "^7.10.4",
+    "@wordpress/scripts": "^12.1.0",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-minify": "^0.5.1"
-  }
+  },
+  "dependencies": {}
 }

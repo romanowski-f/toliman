@@ -64,32 +64,46 @@ function toliman_enqueue_media() {
 function toliman_enqueue_admin_media() {
 	// Enqueues all scripts, styles, settings, and templates necessary to use all media JavaScript APIs.
 	wp_enqueue_media();
-
-	wp_enqueue_script( 'wp-link', 'jquery-ui' );
-
-	// Font Awesome
-	wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v5.0.6/css/all.css');
-
-	// Admin style
-	wp_enqueue_style('admin-style', get_template_directory_uri() . '/assets/css/admin-styles.css', array(), '1.1.5');
-
-	//	Register and enqueue the meta-box-image.js script
-	wp_register_script('media-button', get_template_directory_uri() . '/assets/js/media-button.js', array('jquery'), '1.1.0');
-	wp_localize_script('media-button', 'toliman_media',
-		array(
-			'title'		=> __('Choose or upload an image'),
-			'button'	=> __('Select')
-		)
-	);
-	wp_enqueue_script('media-button');
-
-	//	Admin JS
-	wp_register_script('toliman-js', get_template_directory_uri() . '/assets/js/admin-js.js', array('jquery'), '1.1.0');
-	wp_enqueue_script('toliman-js');
-
 }
 
-//add_action('admin_enqueue_scripts', 'toliman_enqueue_admin_media');
+add_action('admin_enqueue_scripts', 'toliman_enqueue_admin_media');
+
+
+
+// Custom Blocks
+
+function toliman_register_block() {
+	$asset_file = include( get_template_directory_uri() . '/assets/js/blocks/phone-carousel.asset.php');
+
+    wp_register_script(
+        'phone-carousel',
+        get_template_directory_uri() . '/assets/js/blocks/phone-carousel.js',
+        array('wp-blocks', 'wp-element', 'wp-polyfill', 'wp-editor'),
+        filemtime( get_template_directory_uri() . '/assets/js/blocks/phone-carousel.js' )
+    );
+
+    // wp_register_style(
+    // 	'phone-carousel-block-editor',
+    // 	get_template_directory_uri() . '/inc/css/editor.css',
+    // 	array('wp-edit-blocks'),
+    // 	filemtime( get_template_directory_uri() . '/inc/css/editor.css' )
+    // );
+
+    wp_register_style(
+		'phone-carousel-block-front',
+		get_template_directory_uri() . '/assets/css/phone-carousel.css',
+		array( ),
+		filemtime( get_template_directory_uri() . '/assets/css/phone-carousel.css' )
+    );
+
+    register_block_type( 'toliman-blocks/phone-carousel', array(
+        'editor_script' => 'phone-carousel',
+        //'editor_style'  => 'phone-carousel-block-editor',
+        'style'			=> 'phone-carousel-block-front'
+    ) );
+}
+
+add_action( 'init', 'toliman_register_block' );
 
 /*
 *
