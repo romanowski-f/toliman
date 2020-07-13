@@ -7,45 +7,65 @@
 				</div>
 				<div class="col-sm c2a-content">
 					<h2>Help Your Patients Get Informed</h2>
+					<?php $submenus = array(
+						get_field('submenu_1'),
+						get_field('submenu_2'),
+						get_field('submenu_3'),
+						get_field('submenu_4'),
+						get_field('submenu_5'),
+						get_field('submenu_6')
+					); ?>
+					
 					<ul class="descriptions">
-						<li class="active desc-proven-success">
-							<p>Patients want to feel involved in decisions about their treatment.  Use your customized app to give them a voice&mdash;an informed, meaningful voice&mdash;in the treatment planning conversation.  Your patients can review relevant treatment information at their own pace, whenever and wherever is convenient for them.  A collaborative approach improves patient outcomes and satisfaction.</p>
-						</li>
-						<li class="desc-functionality">
-							<p>We offer a top-quality patient-centric mobile app tailored to your needs – one that will run on an iPhone, iPad, and Android.</p>
-						</li>
-						<li class="desc-customizable">
-							<p>We will design an app that addresses your specific patient care needs.</p>
-						</li>
-						<li class="desc-value">
-							<p>No other healthcare app company offers the high quality of Toliman at such an affordable price.</p>
-						</li>
-						<li class="desc-quality">
-							<p>Ours is the highest-quality shared decision-making app available anywhere.</p>
-						</li>
-						<li class="desc-speed">
-							<p>Your customized app will accept and output information at the same speed to which your patients have become accustomed on other apps.</p>
-						</li>
+						<?php $i = 0; ?>
+						<?php foreach($submenus as $submenu) : ?>
+							
+							<?php if ($submenu['enabled']) : ?>
+							<li class="submenus-<?php echo $i; if ($i == 0) : echo ' active'; endif; ?>">
+								<p><?php echo $submenu['description']; ?></p>
+							</li>
+							<?php $i++; ?>
+							<?php endif; ?>
+
+						
+						<?php endforeach; ?>
 					</ul>
+
 					<ul class="categories d-none d-md-block">
-						<li class="active desc-proven-success">Proven Success</li>
-						<li class="desc-functionality">Functional</li>
-						<li class="desc-customizable">Customizable</li>
-						<li class="desc-value">Value</li>
-						<li class="desc-quality">Quality</li>
-						<li class="desc-speed">Speed</li>
+
+						<?php $i = 0; ?>
+						<?php foreach($submenus as $submenu) : ?>
+							
+							<?php if ($submenu['enabled']) : ?>
+							<li class="submenus-<?php echo $i; if ($i == 0) : echo ' active'; endif; ?>">
+								<?php echo $submenu['name']; ?>
+							</li>
+							<?php $i++; ?>
+							<?php endif; ?>
+
+						
+						<?php endforeach; ?>
+
 					</ul>
 					<div class="d-none d-md-block">
 						<a class="btn btn-primary create" href="<?php echo get_bloginfo('url'); ?>/how-it-works">Create Your App</a>
 					</div>
 				</div>
 					<ul class="categories d-md-none text-center">
-						<li class="active desc-proven-success">Proven Success</li>
-						<li class="desc-functionality">Functionality</li>
-						<li class="desc-customizable">Customizable</li>
-						<li class="desc-value">Value</li>
-						<li class="desc-quality">Quality</li>
-						<li class="desc-speed">Speed</li>
+
+						<?php $i = 0; ?>
+						<?php foreach($submenus as $submenu) : ?>
+							
+							<?php if ($submenu['enabled']) : ?>
+							<li class="submenus-<?php echo $i; if ($i == 0) : echo ' active'; endif; ?>">
+								<?php echo $submenu['name']; ?>
+							</li>
+							<?php $i++; ?>
+							<?php endif; ?>
+
+						
+						<?php endforeach; ?>
+						
 					</ul>
 					<div class="d-md-none" style="width: 100%">
 						<a class="btn btn-primary create d-block mx-auto" style="width: 160px" href="<?php echo get_bloginfo('url'); ?>/how-it-works">Create Your App</a>

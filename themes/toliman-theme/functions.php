@@ -119,7 +119,7 @@ function toliman_enqueue_admin_media() {
 // -------------------------------------------------------------- //
 // ------------------- Custom Post Types ------------------------ //
 // -------------------------------------------------------------- //
-//include(get_template_directory() . '/inc/custom-post-types.php');
+include(get_template_directory() . '/inc/custom-post-types.php');
 
 // -------------------------------------------------------------- //
 // ------------------ Screenshots Slider ------------------------ //

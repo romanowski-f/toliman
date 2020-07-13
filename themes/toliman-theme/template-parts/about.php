@@ -25,12 +25,12 @@
 
       <h2><?php the_title(); ?></h2>
 
-<!--       <?php $thumb = get_the_post_thumbnail_url(); ?>
+       <?php $thumb = get_the_post_thumbnail_url(); ?>
       <?php if (isset($thumb) && !empty($thumb)) : ?>
       <div class="thumbnail">
         <img src="<?php echo $thumb; ?>" alt="">
       </div>
-      <?php endif; ?> -->
+      <?php endif; ?>
 
       <?php the_content(); ?>
 
